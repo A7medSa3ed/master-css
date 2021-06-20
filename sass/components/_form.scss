@@ -1,0 +1,94 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &__input {
+    display: block;
+    width: 90%;
+    font-size: 1.5rem;
+    font-family: inherit;
+    padding: 1.5rem 2rem;
+    border-radius: 0.2rem;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+    border-bottom: 0.3rem solid transparent;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    /* make this style when focus on this input */
+    &:focus {
+      outline: none;
+      border-bottom: 0.3rem solid $color-primary-light;
+    }
+
+    /* make this style when focus on this input and it is invalid */
+    &:focus:invalid {
+      border-bottom: 0.3rem solid $color-secondary-dark;
+    }
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+  }
+  &__label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    transition: all 0.5s;
+  }
+
+  /* make this style for this element when the placeholder is hidden,
+      if we write on input and placeholder is hidden so, make this style */
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+  &__radio-group {
+    width: 49%;
+    display: inline-block;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-label {
+    font-size: $font-size;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4.5rem;
+  }
+  &__radio-btn {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border: 0.5rem solid $color-primary;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.4rem;
+    left: 0;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      @include absCenter;
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+  &__radio-input:checked ~ &__radio-label &__radio-btn::after {
+    opacity: 1;
+  }
+}

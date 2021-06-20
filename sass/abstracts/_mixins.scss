@@ -1,0 +1,60 @@
+// This file for all sass Mixins
+
+@mixin clearFix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//Media Queries
+/*
+  ** 0    -- 600px        --> phone
+  ** 600  -- 900px        --> Tablet Portrait
+  ** 900  -- 1200px       --> Tablet Landscape
+  ** 1200 -- 1800px       --> Normal Style and displays
+  ** More 1800px          --> Large Desktop
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      //(600), 1em = 16px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      //(900), 1em = 16px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      //(1200), 1em = 16px
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      //(1800), 1em = 16px
+      @content;
+    }
+  }
+}
+
+/*
+  * If we make our product for mobile, so we use (min-width)
+  * If we make our product for computer, so we use (max-width)
+  * (min-width) --> start from this point to the next point
+  * (max-width) --> start from previous point and stop at this point
+  * in media query, order of writing media query code is very important
+*/

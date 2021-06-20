@@ -1,0 +1,183 @@
+html {
+  /* 
+    * (rem)--> mean root element, it take the size of font-size value of the root element
+                2 rem --> here it mean --> it will convert 62.5% to pixel value (62.5% * 16px) = (10px)
+                          then calculate rem --> 2 * 10px it will be (20px).
+    * we use rem to make our design more responsive because all pixels of our app
+       is depend on single value of the root element,
+       so if we maximize or minimize the design still responsive            
+    */
+  font-size: 62.5%; /* we define font-size here to be able to use (rem) for all next element */
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* inherit here tell all element to inherit (box-sizing) value from the parent element, 
+      it will inherit it's value from the nearest parent till it reach the defined value in body */
+  box-sizing: inherit;
+}
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+.header {
+  height: 95vh;
+
+  /* linear-gradient --> make a mix between 2 color in a gradient way, it used to make overlay on image
+      - at first you should specify direction of gradient
+      - then specify colors
+    */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 131, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+
+  /* this tell the browser focus on the top of image rather than any side,
+      so if you make screen smaller than the image it will concern on the top of image
+      this is for any direction you want not top only
+   */
+  background-position: top;
+  /* clip-path:polygon(x y, x y, x y, x y, x y, ...etc) 
+      in clip path you can cut the section to draw any thing you want by specify 
+      the start point and the end point of each corner to get final result
+    */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__logo {
+  height: 3.5rem;
+}
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+}
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInLeft; /* animation name */
+  animation-duration: 1s; /* animation duration */
+  animation-timing-function: ease-out; /* Working Mechanism of this animation */
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  animation: moveInRight 1s ease-out; /* animation short code like as in (.heading-primary-main) */
+}
+@keyframes moveInLeft {
+  0% {
+    /* here it will be invisible and start from 100 px from left */
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    /* then it will be mid visible and still move from left 100px to right 10px */
+    transform: translateX(1rem);
+  }
+  100% {
+    /* then it will stop and be visible and move from right 10px to it's original place 0px */
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  transition: all 0.2s;
+  border-radius: 10rem;
+  position: relative;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+.btn--white::after {
+  background-color: #fff;
+}
+.btn--animated {
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  /* normal animation it will make the element go to the 0% position from it's current position
+      and start the animation, we show this transition, so if we don't need this,
+      then we will use this property
+      it will make the element disappear and go to the 0% position then start the animation
+      without we show this transition
+    */
+  animation-fill-mode: backwards;
+}
+@keyframes moveInBottom {
+  0% {
+    transform: translateY(3rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}

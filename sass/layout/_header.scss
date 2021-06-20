@@ -1,0 +1,61 @@
+.header {
+  height: 95vh;
+
+  /* linear-gradient --> make a mix between 2 color in a gradient way, it used to make overlay on image
+      - at first you should specify direction of gradient
+      - then specify colors
+    */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero-small.jpg);
+  background-size: cover;
+
+  /* this tell the browser focus on the top of image rather than any side,
+      so if you make screen smaller than the image it will concern on the top of image
+      this is for any direction you want not top only
+   */
+  background-position: top;
+
+  /* clip-path:polygon(x y, x y, x y, x y, x y, ...etc) 
+      in clip path you can cut the section to draw any thing you want by specify 
+      the start point and the end point of each corner to get final result
+    */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    // we can use resolution as a break point to make style like this
+    // if there is media query has the same style, so we can group them as shown
+
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+  }
+
+  @include respond(phone) {
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}

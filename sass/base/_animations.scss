@@ -1,0 +1,41 @@
+// This file for all animation
+
+@keyframes moveInLeft {
+  0% {
+    /* here it will be invisible and start from 100 px from left */
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    /* then it will be mid visible and still move from left 100px to right 10px */
+    transform: translateX(1rem);
+  }
+  100% {
+    /* then it will stop and be visible and move from right 10px to it's original place 0px */
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    transform: translateY(3rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}

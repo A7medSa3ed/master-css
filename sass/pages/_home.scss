@@ -1,0 +1,119 @@
+.section-about {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  margin-top: -20vh;
+
+  @include respond(tab-port) {
+    padding: 20rem 0;
+  }
+}
+
+.section-features {
+  background-color: $color-primary-dark;
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(/img/nat-4.jpg);
+  background-size: cover;
+  transform: skewY(-4deg);
+  margin-top: -10rem;
+
+  & > * {
+    /* the previous selector mean--> apply this style for all direct child of the section-features */
+    transform: skewY(4deg);
+  }
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
+}
+
+.section-tours {
+  background-color: $color-grey-light-1;
+  padding: 20rem 0 15rem 0;
+  margin-top: -10rem;
+
+  @include respond(tab-port) {
+    padding: 17rem 0 10rem 0;
+  }
+}
+.section-stories {
+  position: relative;
+  padding: 15rem 0;
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
+}
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary-light,
+    $color-primary-dark
+  );
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
+}
+
+.book {
+  /* we can  use degree to specify from any direction you will start,
+      and  put percentage of each color beside it to define how much this color will take from gradient
+      directions start from 0% and end to 100%,
+      EX: linear-gradient(90deg, red 10%, yellow 30%, black  30%)
+          * 90deg --> this is direction
+          * red will start from 0% to 10%
+          * yellow will start from 10% to 30%
+          * black will start from 30% to the end
+          ** the previous color and the next color overlapped in gradient way
+       */
+
+  background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(/img/nat-10.jpg);
+  background-size: 100%;
+  border-radius: 0.3rem;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  @include respond(tab-land) {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 65%,
+        transparent 65%
+      ),
+      url(/img/nat-10.jpg);
+
+    background-size: cover;
+  }
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        to right,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 65%
+      ),
+      url(/img/nat-10.jpg);
+
+    background-size: cover;
+  }
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+
+    @include respond(tab-land) {
+      width: 65%;
+    }
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+}

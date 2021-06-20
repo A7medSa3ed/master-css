@@ -1,0 +1,91 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    font-size: $font-size;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    transition: all 0.2s;
+    border-radius: 10rem;
+    position: relative;
+
+    // this for button only not anchor
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+
+    /* normal animation it will make the element go to the 0% position from it's current position
+      and start the animation, we show this transition, so if we don't need this,
+      then we will use this property
+      it will make the element disappear and go to the 0% position then start the animation
+      without we show this transition
+    */
+    animation-fill-mode: backwards;
+  }
+}
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 0.1rem solid $color-primary;
+    padding: 0.3rem;
+    transition: all 0.2s;
+  }
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-0.2rem);
+  }
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+
+    transform: translate(0);
+  }
+}

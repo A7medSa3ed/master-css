@@ -1,0 +1,28 @@
+// This file is our root file that contain all files of sass folder and it's used in our html
+
+@import "abstracts/index";
+@import "base/index";
+@import "components/index";
+@import "layout/index";
+@import "pages/index";
+
+/*
+  [NOTES]
+    * we can make a style for an element using it's attribute like:- src, href ...etc
+      - EX: [src="source"]{} ==> this mean make a style for this element that contain this attribute value.
+
+    * we can use ($, *, ^) before (=) in previous example 
+      ** $ --> mean make this style for all elements which this attribute ends with this value
+      ** * --> mean make this style for all elements which this attribute contain this value
+      ** ^ --> mean make this style for all elements which this attribute start with this value
+
+    * ( :not(element){styles} ) --> this mean make these containing styles for all element except this element
+      - this element may be pseudo code like (:last-child, :first-child ...etc) 
+
+    * if we use calc() function in sass file with variable we must
+      use variable inside curly parentheses and put (#) before it
+      - EX: 
+            ** calc(100% - #{variable})  --> this is correct
+            ** calc(100% - variable)     --> this is incorrect
+
+*/

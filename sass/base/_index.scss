@@ -1,0 +1,49 @@
+// This folder contain styles of base things in our app like animations, typography...etc
+// This file for base of our app like html element, reset elements, root element *, body ...etc
+
+@import "animations";
+@import "typography";
+@import "utilities";
+
+html {
+  /* 
+    * (rem)--> mean root element, it take the size of font-size value of the root element
+                2 rem --> here it mean --> it will convert 62.5% to pixel value (62.5% * 16px) = (10px)
+                          then calculate rem --> 2 * 10px it will be (20px).
+    * we use rem to make our design more responsive because all pixels of our app
+       is depend on single value of the root element,
+       so if we maximize or minimize the design still responsive            
+    */
+  font-size: 62.5%; /* we define font-size here to be able to use (rem) for all next element */
+
+  @include respond(tab-land) {
+    // in this screen, font-size will be ( 50% * 16px = 8px), it will override the previous font-size
+    font-size: 50%;
+  }
+  @include respond(tab-port) {
+    // in this screen, font-size will be ( 56.25% * 16px = 9px), it will override the previous font-size
+    font-size: 56.25%;
+  }
+  @include respond(big-desktop) {
+    // in this screen, font-size will be ( 75% * 16px = 12px), it will override the previous font-size
+    font-size: 75%;
+  }
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  /* inherit here tell all element to inherit (box-sizing) value from the parent element, 
+      it will inherit it's value from the nearest parent till it reach the defined value in body */
+  box-sizing: inherit;
+}
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0rem;
+  }
+}

@@ -1,0 +1,207 @@
+.card {
+  perspective: 150rem;
+  position: relative;
+  height: 52rem;
+
+  // Functionality
+  &__side {
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 52rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+    overflow: hidden;
+    &--front {
+      background-color: $color-white;
+    }
+    &--back {
+      transform: rotateY(180deg);
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+  &:hover &__side--back {
+    transform: rotateY(0deg);
+  }
+
+  //Front-side
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+
+    /* work with background-image with linear gradient to make opacity on image */
+    background-blend-mode: screen;
+
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+  &__heading {
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    text-align: right;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 2.8rem;
+    color: $color-white;
+    width: 75%;
+  }
+  &__heading-span {
+    padding: 1rem 1.5rem;
+
+    /* if the single box divide into 2 box,
+        it will apply border and padding for each box not to single box */
+    -webkit-box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
+  }
+  &__details {
+    padding: 3rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+        &:not(:last-child) {
+          border-bottom: 0.1rem solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  //Back-side
+
+  &__cta {
+    position: absolute;
+    @include absCenter;
+    width: 90%;
+    text-align: center;
+  }
+  &__price-box {
+    margin-bottom: 8rem;
+    color: $color-white;
+  }
+  &__price-only {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+  }
+  &__price-value {
+    font-weight: 100;
+    font-size: 6rem;
+  }
+
+  // you can define propertt as a bearkpoint like (hover, actuve ...etc)
+  // here you tell the browser if the screen doesn't support hover, so make this style
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    height: auto;
+    border-radius: 0.3rem;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    // Functionality
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+      &--back {
+        transform: rotateY(0deg);
+        clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+    &:hover &__side--front {
+      transform: rotateY(0deg);
+    }
+    &__details {
+      padding: 1rem 3rem;
+    }
+    //Back-side
+
+    &__cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+  }
+}
